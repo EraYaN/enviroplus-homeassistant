@@ -84,17 +84,13 @@ class EnviroPlus:
         
         avg_cpu_temp = sum(self.cpu_samples) / float(len(self.cpu_samples))
 
-        t1 = readings["temperature"] # RH source temp
+        t_precomp = readings["temperature"] # RH source temp
 
         readings["temperature"] = readings["temperature"] - ((avg_cpu_temp - readings["temperature"]) / self.cpu_comp_factor)
 
-        t2 = readings["temperature"] # RH target temp
-
-        rh1 = readings["humidity"] # RH at t1
-        ah = calculate('AH', RH=rh1, p=readings['pressure']*100, T=t1+273.15)
-        rh2 = calculate('RH', AH=rh1, p=readings['pressure']*100, T=t2+273.15)
-
-        readings["humidity"] = rh2
+        ah = calculate('AH', RH=readings["humidity"], p=readings['pressure'], p_unit="hPa", T=t_precomp, T_unit="degC")
+        rh_comp = calculate('RH', AH=ah, p=readings['pressure'], p_unit="hPa", Tv=readings["temperature"], Tv_unit="degC") # Using the virtual temperature is close enough
+        readings["humidity"] = rh_comp
 
         return readings
 

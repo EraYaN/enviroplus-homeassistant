@@ -1,0 +1,5 @@
+paho-mqtt>=1.6.1
+enviroplus>=0.0.5
+RPi.GPIO>=0.7.0
+smbus>=1.1.post2
+atmos>=0.2.6
