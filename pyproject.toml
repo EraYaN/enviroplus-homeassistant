@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "enviroplus-homeassistant"
+version = "0.1.0"
+description = ""
+authors = ["Erwin de Haan <1627021+EraYaN@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "enviroplus_homeassistant"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+paho-mqtt = "^1.6.1"
+APScheduler = "^3.8.1"
+enviroplus = "^0.0.5"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
