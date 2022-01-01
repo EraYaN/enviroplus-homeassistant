@@ -6,7 +6,7 @@ import argparse, time, sys, logging
 
 from enviroplus_homeassistant.models import SensorPayload
 
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 from .publish import MqttPublisher
 from .discovery import HassDiscovery
